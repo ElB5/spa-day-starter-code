@@ -56,6 +56,12 @@ public class SpaDayController {
         facials.add("Rejuvenating");
         facials.add("Enzyme Peel");
 
+//        Allows for the info to be transmitted to the display screen, without it - what user selected does not show
+        model.addAttribute("name", name);
+        model.addAttribute("skintype", skintype);
+        model.addAttribute("manipedi", manipedi);
+
+
         ArrayList<String> appropriateFacials = new ArrayList<>();
         for (int i = 0; i < facials.size(); i ++) {
             if (checkSkinType(skintype,facials.get(i))) {
