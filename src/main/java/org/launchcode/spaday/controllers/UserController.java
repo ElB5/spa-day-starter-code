@@ -20,9 +20,17 @@ public class UserController {
     @PostMapping
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify) {
         if (user.getPassword().equals(verify)) {
-            return "user/index";
-        } else {
-            return "user/add";
+            model.addAttribute("username", user.getUsername());
+            model.addAttribute("email", user.getEmail());
+            if (user.getPassword().equals(verify)) {
+                return "user/index";
+            } else {
+                model.addAttribute("error", "Passwords do not match.");
+                return "user/add";
+            }
         }
+        //not sure if this is correct:
+        return "user/add";
     }
 }
+
